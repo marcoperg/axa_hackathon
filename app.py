@@ -2,7 +2,7 @@ import streamlit as st
 from main import create_agent
 
 # Set up the Streamlit app
-st.title("AXA Health Assistant 🩺")
+st.title("AXACare Health Assistant 🩺")
 
 # Initialize chat history
 if "messages" not in st.session_state:
@@ -29,10 +29,10 @@ if prompt := st.chat_input("¿Cómo te sientes hoy?"):
         output_stream = agent.run(prompt, stream=True)
         msg = []
         for chunk in output_stream:
-            st.markdown(chunk.content)
+            #st.write(chunk.content)
             msg.append(chunk.content)
         msg = ''.join(msg)
-        #st.markdown(msg)
+        st.markdown(msg)
         
     # Add assistant response to history
     st.session_state.messages.append({"role": "assistant", "content": msg})
